@@ -9,3 +9,10 @@ sudo apt-get -y install python2-setuptools-whl
 
 git clone https://github.com/markbekhet/DB-TP3-LOG8430E
 mv DB-TP3-LOG8430E NoSQL
+cd NoSQL
+
+# clone the repo for benchmarking
+git clone http://github.com/brianfrankcooper/YCSB.git
+cd YCSB
+mvn -pl site.ycsb:redis-binding -am clean package
+cd ../..

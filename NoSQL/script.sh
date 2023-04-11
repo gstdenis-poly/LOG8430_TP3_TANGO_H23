@@ -2,12 +2,11 @@
 virtualenv -p /usr/bin/python2 venv
 source venv/bin/activate
 
-# clone the repo for benchmarking
-git clone http://github.com/brianfrankcooper/YCSB.git
-cd YCSB
-mvn -pl site.ycsb:redis-binding -am clean package
+# Avoid permission denied errors
+sudo chmod 777 /var/run/docker.sock
 
-cd ..
+# Stop redis-server
+sudo /etc/init.d/redis-server stop
 
 ## Run the container for redis DB and run the tests
 printf "\nRunning Benchmarks on redis DB, results can be found in the redis folder \n\n"
@@ -63,5 +62,4 @@ printf "\nFinished benchmarking redis DB \n\n"
 
 ## Cleaning up everything
 deactivate
-rm -rf YCSB
 rm -rf venv

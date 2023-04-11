@@ -30,4 +30,3 @@ python --version
 npm rebuild grpc --force
 cd ../..
 mv caliper-benchmarks Blockchain
-sudo chmod 777 /var/run/docker.sock
