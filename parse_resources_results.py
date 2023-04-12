@@ -32,10 +32,12 @@ if __name__ == "__main__":
                 cpu = float(line[line_info_idxs['CPU %']:].split('%')[0])
                 mem_usage = float(line[line_info_idxs['MEM USAGE']:].split('MiB')[0])
                 mem = float(line[line_info_idxs['MEM %']:].split('%')[0])
-                net_in = line[line_info_idxs['NET I/O']:].split('B / ')[0][0:-1]
-                net_in = float(net_in) if net_in else 0.0
+                net_in = line[line_info_idxs['NET I/O']:].split('B / ')[0]
+                net_in_scale = 1.0 if net_in and net_in[-1] == 'M' else 0.001
+                net_in = float(net_in[0:-1]) * net_in_scale if net_in[0:-1] else 0.0
                 net_out = line[line_info_idxs['NET I/O']:].split('B / ')[1].split('B')[0][0:-1]
-                net_out = float(net_out) if net_out else 0.0
+                net_out_scale = 1.0 if net_out and net_out[-1] == 'M' else 0.001
+                net_out = float(net_out[0:-1]) * net_out_scale if net_out[0:-1] else 0.0
 
                 output_file2.write(name + ';')
                 output_file2.write(str(cpu) + ';')
