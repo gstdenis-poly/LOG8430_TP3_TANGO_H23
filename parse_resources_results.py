@@ -70,7 +70,7 @@ if __name__ == "__main__":
                 output_file1.write(str(containers_stats[container]['MEM USAGE'] / count) + ';')
                 output_file1.write(str(containers_stats[container]['MEM %'] / count) + ';')
                 output_file1.write(str(containers_stats[container]['NET IN'] / count) + ';')
-                output_file1.write(str(containers_stats[container]['NET OUT'] / count) + ';')
+                output_file1.write(str(containers_stats[container]['NET OUT'] / count))
                 output_file1.write('\n')
 
             input_file.close()
